@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// 🔄 CHANGE: Updated usernames to common Asian Muslim names
+// 🔄 Reviews Data
 const reviews = [
   { username: "Ahmed Khan", description: "Excellent service! The kitchen renovation was completed on time and the quality exceeded expectations." },
   { username: "Fatima Ali", description: "Very professional team. They handled the complex structural changes smoothly and cleanly." },
@@ -23,57 +23,70 @@ const reviews = [
 ];
 
 const ReviewsSection = () => {
+
+  // ✅ Slider Configuration (no undefined settings issue)
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 700,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2600,
     arrows: false,
     centerMode: true,
     centerPadding: "0px",
     responsive: [
       {
         breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
+        settings: { slidesToShow: 2 },
       },
       {
         breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
+        settings: { slidesToShow: 1 },
       },
     ],
   };
 
   return (
-    <div className="bg-gray-100 py-12 px-6 md:px-20 text-center">
-      <h3 className="text-blue-950  text-4xl font-bold">Client Feedback</h3>
-      <h2 className="text-sm md:text-2xl font-bold mt-2 text-gray-800">What Our Clients Say About Us</h2>
+    <div
+      className="py-16 px-6 md:px-20 text-center"
+      style={{
+        background: "linear-gradient(90deg, rgba(225,244,255,1) 0%, rgba(204,230,255,1) 50%, rgba(255,255,255,1) 100%)",
+      }}
+    >
+      <h3 className="text-blue-900 text-4xl font-extrabold tracking-wide">
+        Client Feedback
+      </h3>
+      <h2 className="text-sm md:text-xl font-semibold mt-2 text-gray-700">
+        What Our Clients Say About Us
+      </h2>
 
-      {/* Reviews Carousel */}
-      <div className="mt-8">
+      {/* Reviews Slider */}
+      <div className="mt-10 max-w-7xl mx-auto">
         <Slider {...settings}>
           {reviews.map((review, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.7, delay: index * 0.06 }}
               className="p-4"
             >
-              <div className="bg-white p-6 border border-gray-300 rounded-lg shadow-lg text-left mx-2">
+              <div className="bg-white p-6 border border-gray-200 rounded-xl shadow-lg text-left mx-3 hover:shadow-xl transition">
                 <div className="flex items-center space-x-3">
                   <FaUserCircle className="text-gray-500 text-4xl" />
-                  <h3 className="text-lg font-semibold text-gray-800">{review.username}</h3>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {review.username}
+                  </h3>
                 </div>
-                <p className="text-gray-600 mt-2">{review.description}</p>
-                <div className="flex mt-3 text-yellow-500">
-                  <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+
+                <p className="text-gray-600 mt-2 leading-relaxed">
+                  {review.description}
+                </p>
+
+                <div className="flex mt-3 text-yellow-400">
+                  <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
                 </div>
               </div>
             </motion.div>
