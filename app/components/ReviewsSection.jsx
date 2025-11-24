@@ -201,7 +201,7 @@ const ReviewsSection = () => {
       </div>
       
      <a
-        href="https://wa.me/+9203303949638"
+        href="https://wa.me/+9203142124253"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 z-50 p-4 rounded-full shadow-lg hover:bg-green-600 transition-all"
