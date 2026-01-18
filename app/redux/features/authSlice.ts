@@ -1,4 +1,4 @@
-// app/store/features/authSlice.ts
+
 "use client";
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
@@ -18,11 +18,11 @@ const setAuthToken = (token: string | null) => {
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (
-    { username, email, password }: { username: string; email: string; password: string },
+    { email, password }: {  email: string; password: string },
     thunkAPI
   ) => {
     try {
-      const res = await axios.post(`${API_URL}/api/auth/register`, { username, email, password });
+      const res = await axios.post(`${API_URL}/api/auth/register`, {  email, password });
       // expected: { success: true, token, user }
       const { token, user } = res.data;
       if (typeof window !== "undefined" && token) {

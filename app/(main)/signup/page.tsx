@@ -15,7 +15,7 @@ export default function SignupPage() {
 
   const { loading, error, isAuthenticated } = useAppSelector((s) => s.auth);
 
-  const [username, setUsername] = useState("");
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -37,7 +37,7 @@ export default function SignupPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(registerUser({ username, email, password }));
+    dispatch(registerUser({ email, password }));
   };
 
   return (
@@ -63,7 +63,7 @@ export default function SignupPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* Username Field */}
+          {/* Username Field
           <div className="relative">
             <User className="absolute left-3 top-3 text-gray-400" size={20} />
             <input
@@ -74,7 +74,7 @@ export default function SignupPage() {
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-          </div>
+          </div> */}
 
           {/* Email Field */}
           <div className="relative">

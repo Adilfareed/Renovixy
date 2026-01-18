@@ -1,1 +1,14 @@
 @import "tailwindcss";
+.preview img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.no-orders {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+}
