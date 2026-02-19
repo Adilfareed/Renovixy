@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import Provider from "./Provider";
+import { QueryProvider } from "./components/QueryClientProvider";
 
 export const metadata: Metadata = {
   title: "Renovixy",
@@ -18,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Provider>
-          
-          {children} 
-          
-        </Provider>
+        <QueryProvider>
+          <Provider>
+            {children} 
+          </Provider>
+        </QueryProvider>
       </body>
     </html>
   );

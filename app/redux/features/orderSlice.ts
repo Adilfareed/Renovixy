@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import type { RootState } from "../store/store";
+import { API_CONFIG, getAuthToken } from "@/app/config/api";
 
 /* ================= TYPES ================= */
 
@@ -73,8 +74,8 @@ export const fetchOrders = createAsyncThunk<
   { rejectValue: string }
 >("orders/fetchOrders", async (page = 1, thunkAPI) => {
   try {
-    const token = getToken();
-    const res = await axios.get(`${API_URL}/api/orders?page=${page}`, {
+    const token = getAuthToken();
+    const res = await axios.get(`${API_CONFIG.ENDPOINTS.ORDERS.GET_ALL}?page=${page}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return res.data;
@@ -92,8 +93,8 @@ export const createOrder = createAsyncThunk<
   { rejectValue: string }
 >("orders/createOrder", async (formData, thunkAPI) => {
   try {
-    const token = getToken();
-    const res = await axios.post(`${API_URL}/api/orders`, formData, {
+    const token = getAuthToken();
+    const res = await axios.post(API_CONFIG.ENDPOINTS.ORDERS.CREATE, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data",
@@ -114,8 +115,8 @@ export const updateOrder = createAsyncThunk<
   { rejectValue: string }
 >("orders/updateOrder", async ({ id, payload }, thunkAPI) => {
   try {
-    const token = getToken();
-    const res = await axios.put(`${API_URL}/api/orders/${id}/status`, payload, {
+    const token = getAuthToken();
+    const res = await axios.put(API_CONFIG.ENDPOINTS.ORDERS.UPDATE_STATUS.replace(':id', id), payload, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return res.data.data;

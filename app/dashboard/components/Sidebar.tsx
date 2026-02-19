@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   BarChart2,
@@ -11,6 +12,7 @@ import {
   Settings,
   LogOut,
   LayoutDashboard,
+  List,
 } from "lucide-react";
 
 const menu = [
@@ -19,7 +21,7 @@ const menu = [
   { name: "Orders", href: "/dashboard/orders", icon: <ShoppingCart size={20} /> },
   { name: "Projects", href: "/dashboard/projects", icon: <Package size={20} /> },
   { name: "Services", href: "/dashboard/services", icon: <TrendingUp size={20} /> },
-
+  { name: "Categories", href: "/dashboard/services/categories", icon: <List size={20} /> },
 ];
 
 export default function Sidebar() {
@@ -29,11 +31,15 @@ export default function Sidebar() {
     <aside className="w-64 bg-white shadow-sm border-r h-screen p-6 flex flex-col">
 
       {/* Brand */}
-      <div className="flex items-center gap-2 mb-10">
-        <div className="bg-purple-600 text-white rounded-xl p-2">
-          <LayoutDashboard size={22} />
-        </div>
-        <h1 className="text-xl font-bold text-gray-800">Constuct&Repair</h1>
+      <div className="flex items-center gap-3 mb-10">
+        <Image 
+          src="/assets/LogoFinal.png" 
+          alt="Renovixy" 
+          width={32} 
+          height={32}
+          className="object-contain"
+        />
+        <h1 className="text-xl font-bold renovixy-gradient-text">Renovixy</h1>
       </div>
 
       {/* Menu */}
@@ -48,8 +54,8 @@ export default function Sidebar() {
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all
               ${
                 isActive
-                  ? "bg-purple-600 text-white shadow-md"
-                  : "text-gray-500 hover:bg-gray-100"
+                  ? "bg-renovixy-blue-600 text-white shadow-md renovixy-shadow"
+                  : "text-gray-500 hover:bg-renovixy-blue-50 hover:text-renovixy-blue-600"
               }`}
             >
               {item.icon}
@@ -62,7 +68,7 @@ export default function Sidebar() {
       {/* Sign Out */}
       <div className="mt-auto">
         <button
-          className="flex items-center gap-3 text-gray-500 px-4 py-3 rounded-xl w-full hover:bg-gray-100"
+          className="flex items-center gap-3 text-gray-500 px-4 py-3 rounded-xl w-full hover:bg-renovixy-red-50 hover:text-renovixy-red-600 transition-colors"
         >
           <LogOut size={20} />
           <span className="font-medium">Sign Out</span>

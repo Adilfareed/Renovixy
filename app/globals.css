@@ -1,4 +1,68 @@
 @import "tailwindcss";
+
+@theme {
+  --color-renovixy-blue-50: #eff6ff;
+  --color-renovixy-blue-100: #dbeafe;
+  --color-renovixy-blue-200: #bfdbfe;
+  --color-renovixy-blue-300: #93c5fd;
+  --color-renovixy-blue-400: #60a5fa;
+  --color-renovixy-blue-500: #3b82f6;
+  --color-renovixy-blue-600: #2563eb;
+  --color-renovixy-blue-700: #1d4ed8;
+  --color-renovixy-blue-800: #1e40af;
+  --color-renovixy-blue-900: #1e3a8a;
+
+  --color-renovixy-red-50: #fef2f2;
+  --color-renovixy-red-100: #fee2e2;
+  --color-renovixy-red-200: #fecaca;
+  --color-renovixy-red-300: #fca5a5;
+  --color-renovixy-red-400: #f87171;
+  --color-renovixy-red-500: #ef4444;
+  --color-renovixy-red-600: #dc2626;
+  --color-renovixy-red-700: #b91c1c;
+  --color-renovixy-red-800: #991b1b;
+  --color-renovixy-red-900: #7f1d1d;
+}
+
+:root {
+  /* Renovixy Brand Colors */
+  --renovixy-blue-50: #eff6ff;
+  --renovixy-blue-100: #dbeafe;
+  --renovixy-blue-200: #bfdbfe;
+  --renovixy-blue-300: #93c5fd;
+  --renovixy-blue-400: #60a5fa;
+  --renovixy-blue-500: #3b82f6;
+  --renovixy-blue-600: #2563eb;
+  --renovixy-blue-700: #1d4ed8;
+  --renovixy-blue-800: #1e40af;
+  --renovixy-blue-900: #1e3a8a;
+  --renovixy-blue-950: #172554;
+
+  --renovixy-red-50: #fef2f2;
+  --renovixy-red-100: #fee2e2;
+  --renovixy-red-200: #fecaca;
+  --renovixy-red-300: #fca5a5;
+  --renovixy-red-400: #f87171;
+  --renovixy-red-500: #F53E29;
+  --renovixy-red-600: #dc2626;
+  --renovixy-red-700: #b91c1c;
+  --renovixy-red-800: #991b1b;
+  --renovixy-red-900: #7f1d1d;
+  --renovixy-red-950: #450a0a;
+
+  --renovixy-orange-50: #fff7ed;
+  --renovixy-orange-100: #ffedd5;
+  --renovixy-orange-200: #fed7aa;
+  --renovixy-orange-300: #fdba74;
+  --renovixy-orange-400: #fb923c;
+  --renovixy-orange-500: #f97316;
+  --renovixy-orange-600: #ea580c;
+  --renovixy-orange-700: #c2410c;
+  --renovixy-orange-800: #9a3412;
+  --renovixy-orange-900: #7c2d12;
+  --renovixy-orange-950: #431407;
+}
+
 .preview img {
   width: 60px;
   height: 60px;
@@ -11,4 +75,51 @@
   text-align: center;
   padding: 30px;
   color: #6b7280;
+}
+
+/* Custom utility classes */
+.renovixy-gradient {
+  background: linear-gradient(135deg, var(--renovixy-blue-600), var(--renovixy-red-500));
+}
+
+.renovixy-gradient-text {
+  background: linear-gradient(135deg, var(--renovixy-blue-600), var(--renovixy-red-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.renovixy-shadow {
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+}
+
+.renovixy-shadow-red {
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+}
+
+/* Animation delay utilities */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Mix blend mode utility */
+.mix-blend-multiply {
+  mix-blend-mode: multiply;
+}
+
+/* Glassmorphism utilities */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glassmorphism-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

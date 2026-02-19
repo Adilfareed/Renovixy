@@ -1,11 +1,18 @@
 // app/store/store.ts
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/authSlice";
-import orderReducer from '../features/orderSlice'
+import orderReducer from '../features/orderSlice';
+import projectReducer from '../features/projectSlice';
+import serviceReducer from '../features/serviceSlice';
+import serviceCategoryReducer from '../features/serviceCategorySlice';
+
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-      orders: orderReducer,
+    orders: orderReducer,
+    projects: projectReducer,
+    services: serviceReducer,
+    serviceCategories: serviceCategoryReducer,
   },
 });
 
