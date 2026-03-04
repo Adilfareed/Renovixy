@@ -130,7 +130,7 @@ const QuoteForm: React.FC = () => {
   };
 
   const getFilteredServices = () => {
-    return services.filter(service => 
+    return services.filter((service:any) => 
       service.title.toLowerCase().includes(serviceSearch.toLowerCase()) ||
       service.description.toLowerCase().includes(serviceSearch.toLowerCase()) ||
       service.category.name.toLowerCase().includes(serviceSearch.toLowerCase())
@@ -277,7 +277,7 @@ const QuoteForm: React.FC = () => {
               {/* Selected Services Tags */}
               {selectedServices.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {selectedServices.map(service => (
+                  {selectedServices.map((service:any)   => (
                     <div key={service._id} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm flex items-center space-x-1">
                       <span className="truncate max-w-32">{service.title}</span>
                       <button
@@ -318,7 +318,7 @@ const QuoteForm: React.FC = () => {
                         No services found
                       </div>
                     ) : (
-                      filteredServices.map(service => (
+                      filteredServices.map((service:any) => (
                         <div
                           key={service._id}
                           className={`p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0 ${

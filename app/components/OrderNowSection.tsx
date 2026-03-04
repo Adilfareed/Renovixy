@@ -8,7 +8,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const OrderNowSection: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center w-full bg-white shadow-lg p-6">
+    <div className="container mx-auto flex flex-col md:flex-row items-center justify-between  bg-white  p-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ const OrderNowSection: React.FC = () => {
         className="flex flex-col sm:flex-row gap-4"
       >
         <Link
-          href="/contact"
+          href="/#qoute"
           className="flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
           <FaEnvelope className="mr-2" />

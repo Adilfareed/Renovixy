@@ -36,7 +36,7 @@ const ServicesDropdownModal: React.FC<ServicesDropdownModalProps> = ({
   const [showPopularOnly, setShowPopularOnly] = useState(false);
 
   // Get unique categories
-  const categories = [...new Set(services.map(service => service.category.name))];
+  const categories = [...new Set(services.map(service => service.category?.name).filter(Boolean))];
 
   // Filter services
   const filteredServices = services.filter(service => {

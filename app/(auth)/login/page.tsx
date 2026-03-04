@@ -55,7 +55,8 @@ export default function LoginPage() {
       if (user.role === "admin") {
         router.push("/dashboard");
       } else {
-        router.push("/user");
+        // Regular users who login directly go to landing page
+        router.push("/");
       }
     }
   }, [error, isAuthenticated, user, dispatch, router]);

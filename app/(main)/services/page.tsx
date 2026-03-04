@@ -37,7 +37,7 @@ export default function ServicesPage() {
 
     // Apply search filter
     if (searchTerm) {
-      filtered = filtered.filter(service =>
+      filtered = filtered.filter((service:any) =>
         service.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         service.description?.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -45,7 +45,7 @@ export default function ServicesPage() {
 
     // Apply category filter
     if (filters.category) {
-      filtered = filtered.filter(service => service.category.name === filters.category);
+      filtered = filtered.filter((service:any) => service.category.name === filters.category);
     }
 
     // Apply featured filter
@@ -212,7 +212,7 @@ function SearchAndFiltersSection({
 
 // Services Grid Section Component
 interface ServicesGridSectionProps {
-  services: Service[];
+  services?: any;
   totalServices: number;
   onServiceClick: (service: Service) => void;
 }
@@ -250,7 +250,7 @@ function ServicesGridSection({
             initial="hidden"
             animate="show"
           >
-            {services.map((service, index) => (
+            {services.map((service:any, index:number) => (
               <ServiceCard
                 key={service._id}
                 service={service}

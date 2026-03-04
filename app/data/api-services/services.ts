@@ -48,13 +48,13 @@ export type Service = {
   category: {
     _id: string;
     name: string;
-    icon: string;
+    icon?: string;
   };
   features: string[];
   images: {
+    _id: string;
     url: string;
     public_id: string;
-    _id: string;
   }[];
   popular?: boolean;
   createdAt: string;

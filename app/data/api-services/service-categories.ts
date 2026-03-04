@@ -20,6 +20,12 @@ export type UpdateServiceCategoryRequest = {
   icon?: string;
 };
 
+export type ServiceCategoriesApiResponse = {
+  success: boolean;
+  count: number;
+  data: ServiceCategory[];
+};
+
 export type ServiceCategoryResponse = {
   categories: ServiceCategory[];
   pagination: {
@@ -34,6 +40,11 @@ export type ServiceCategory = {
   _id: string;
   name: string;
   icon: string;
+  description?: string;
+  isActive?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
 };
 
 /* =======================
@@ -43,10 +54,18 @@ export type ServiceCategory = {
 export const getServiceCategories = async (
   params?: GetServiceCategoriesRequest
 ): Promise<ServiceCategoryResponse> => {
-  const response = await api.get<ServiceCategoryResponse>("/api/service-categories", {
+  const response = await api.get("/api/service-categories", {
     params,
   });
-  return response.data.data;
+  return {
+    categories: (response.data as any).data,
+    pagination: {
+      page: 1,
+      limit: (response.data as any).count || 10,
+      total: (response.data as any).count || (response.data as any).data.length,
+      totalPages: 1,
+    },
+  };
 };
 
 export const getServiceCategoryById = async (id: string): Promise<ServiceCategory> => {

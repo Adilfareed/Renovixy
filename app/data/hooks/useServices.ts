@@ -128,7 +128,7 @@ export function useSearchServices(searchTerm: string, enabled: boolean = true) {
 
   // Filter services locally if search term is provided
   const filteredServices = searchTerm
-    ? services.filter((service: Service) =>
+    ? services.filter((service: any) =>
         service.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         service.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         service.category?.name?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -150,7 +150,7 @@ export function useFilterServices(filters: {
   const { services, isLoading, error } = useGetServices();
 
   // Filter services locally based on provided filters
-  const filteredServices = services.filter((service: Service) => {
+  const filteredServices = services.filter((service: any) => {
     if (filters.category && service.category._id !== filters.category) return false;
     if (filters.popular !== undefined && service.popular !== filters.popular) return false;
     if (filters.featured !== undefined && service.popular !== filters.featured) return false;
