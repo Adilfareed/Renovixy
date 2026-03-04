@@ -118,7 +118,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, qu
   };
 
   const getSelectedServices = () => {
-    return services.filter(service => orderData.serviceType.includes(service._id));
+    return services.filter((service:any) => orderData.serviceType.includes(service._id));
   };
 
   const handleServicesChange = (serviceIds: string[]) => {
@@ -457,7 +457,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, qu
                   </button>
                   {getSelectedServices().length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-2">
-                      {getSelectedServices().map(service => (
+                      {getSelectedServices().map((service:any) => (
                         <span key={service._id} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
                           {service.title}
                         </span>

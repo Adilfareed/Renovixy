@@ -349,7 +349,7 @@ export default function AddProjectPage() {
                 {servicesLoading ? (
                   <div>Loading services...</div>
                 ) : (
-                  availableServices.map(service => (
+                  availableServices.map((service:any) => (
                     <label
                       key={service._id}
                       className="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"
