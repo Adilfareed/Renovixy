@@ -74,11 +74,15 @@ export default function ProjectDetailModal({
       <div className="mb-8">
         <h3 className="text-xl font-semibold mb-3">Services Used</h3>
         <div className="flex flex-wrap gap-2">
-          {project.services.map((service:any, index:any) => (
-            <span key={index} className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg">
-              {service}
-            </span>
-          ))}
+          {Array.isArray(project.services) && project.services.length > 0 ? (
+            project.services.map((service: any, index: number) => (
+              <span key={index} className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg">
+                {typeof service === 'object' && service.title ? service.title : service}
+              </span>
+            ))
+          ) : (
+            <p className="text-gray-500">No services specified</p>
+          )}
         </div>
       </div>
 

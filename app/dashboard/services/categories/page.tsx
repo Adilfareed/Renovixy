@@ -12,19 +12,22 @@ import {
 import { useRouter } from 'next/navigation';
 import { FaPlus, FaEdit, FaTrash, FaArrowLeft, FaSave, FaTimes } from 'react-icons/fa';
 import Link from 'next/link';
+import IconPicker from '@/app/components/IconPicker';
+import * as Icons from 'lucide-react';
 
-// Icon mapping for categories
-const categoryIcons: { [key: string]: React.ReactNode } = {
-  'electrical-services': <span className="text-blue-600">⚡</span>,
-  'plumbing': <span className="text-blue-600">🔧</span>,
-  'kitchen': <span className="text-blue-600">🍳</span>,
-  'clean-hands': <span className="text-blue-600">🧹</span>,
-  'domain': <span className="text-blue-600">🏠</span>,
-  'home-repair-service': <span className="text-blue-600">🔨</span>,
-  'carpenter': <span className="text-blue-600">🛠️</span>,
-  'ac-unit': <span className="text-blue-600">❄️</span>,
-  'local-shipping': <span className="text-blue-600">🚚</span>,
-  'inventory': <span className="text-blue-600">📦</span>
+// Dynamic icon function to get lucide-react icons
+const getCategoryIcon = (iconName: string) => {
+  if (!iconName) return <Icons.Folder className="w-6 h-6 text-gray-400" />;
+
+  // Try to get the icon directly from lucide-react
+  const IconComponent = Icons[iconName as keyof typeof Icons] as React.ComponentType<any>;
+  
+  if (IconComponent) {
+    return <IconComponent className="w-6 h-6 text-blue-600" />;
+  }
+
+  // Fallback to folder icon
+  return <Icons.Folder className="w-6 h-6 text-gray-400" />;
 };
 
 export default function ServiceCategoriesPage() {
@@ -199,7 +202,7 @@ export default function ServiceCategoriesPage() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center">
                     <div className="text-2xl mr-3">
-                      {categoryIcons[category.icon] || <span className="text-gray-400">📁</span>}
+                      {getCategoryIcon(category.icon)}
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">{category.name}</h3>
@@ -248,7 +251,7 @@ export default function ServiceCategoriesPage() {
 
       {/* Add/Edit Modal */}
       {(showAddModal || showEditModal) && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/50  flex items-center justify-center z-50">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -293,30 +296,15 @@ export default function ServiceCategoriesPage() {
               </div>
 
               <div>
-                <label htmlFor="icon" className="block text-sm font-medium text-gray-700 mb-2">
-                  Icon Identifier *
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Icon *
                 </label>
-                <select
-                  id="icon"
-                  name="icon"
+                <IconPicker
                   value={formData.icon}
-                  onChange={handleInputChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    formErrors.icon ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                >
-                  <option value="">Select an icon</option>
-                  <option value="electrical-services">⚡ Electrical</option>
-                  <option value="plumbing">🔧 Plumbing</option>
-                  <option value="kitchen">🍳 Kitchen</option>
-                  <option value="clean-hands">🧹 Cleaning</option>
-                  <option value="domain">🏠 Construction</option>
-                  <option value="home-repair-service">🔨 Renovation</option>
-                  <option value="carpenter">🛠️ Carpenter</option>
-                  <option value="ac-unit">❄️ AC Services</option>
-                  <option value="local-shipping">🚚 Shifting</option>
-                  <option value="inventory">📦 Packers</option>
-                </select>
+                  onChange={(iconName) => setFormData(prev => ({ ...prev, icon: iconName }))}
+                  placeholder="Select an icon for the category"
+                  className={formErrors.icon ? 'border-red-500' : ''}
+                />
                 {formErrors.icon && (
                   <p className="mt-1 text-sm text-red-600">{formErrors.icon}</p>
                 )}

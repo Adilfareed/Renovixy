@@ -14,9 +14,17 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-12 lg:py-0">
-      {/* Animated Background */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-linear-to-br from-renovixy-blue-50 via-white to-renovixy-red-50 opacity-90"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url("/assets/hero_back.jpg")' }}
+        />
+        {/* Dark Overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black/60"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/30 to-transparent"></div>
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-72 h-72 bg-renovixy-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
           <div className="absolute top-40 right-20 w-72 h-72 bg-renovixy-red-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse [animation-delay:2s]"></div>
@@ -39,10 +47,10 @@ const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-renovixy-blue-100"
+              className="inline-flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/20"
             >
               <CheckCircle className="w-4 h-4 text-renovixy-blue-600 mr-2" />
-              <span className="text-sm font-medium text-renovixy-blue-800">Licensed & Insured</span>
+              <span className="text-sm font-medium text-gray-800">Licensed & Insured</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -50,7 +58,7 @@ const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-gray-900"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white"
             >
               Building Your
               <span className="renovixy-gradient-text block lg:inline"> Dreams</span>
@@ -61,7 +69,7 @@ const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+              className="text-base md:text-lg lg:text-xl text-gray-100 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
               Expert construction and renovation services for residential and commercial projects. 
               Quality craftsmanship, timely delivery, and customer satisfaction guaranteed.
@@ -82,8 +90,8 @@ const HeroSection: React.FC = () => {
                   transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                   className="flex items-center space-x-3"
                 >
-                  <div className="w-2 h-2 bg-renovixy-blue-600 rounded-full shrink-0"></div>
-                  <span className="text-gray-700 font-medium">{feature}</span>
+                  <div className="w-2 h-2 bg-renovixy-blue-400 rounded-full shrink-0"></div>
+                  <span className="text-gray-100 font-medium">{feature}</span>
                 </motion.div>
               ))}
             </motion.div>

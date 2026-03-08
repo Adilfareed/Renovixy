@@ -3,11 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { 
-  Home, Building, Bath, HardHat, PaintBucket, Trees,
-  Wrench, Ruler, Tractor, Hammer, Zap, Phone, 
-  ArrowRight, Star, Shield, Clock, CheckCircle
-} from "lucide-react";
+import * as Icons from "lucide-react";
 import { useGetServiceCategories } from "@/app/data/hooks";
 import type { ServiceCategory } from "@/app/data/api-services/service-categories";
 
@@ -17,35 +13,19 @@ const PopularServices: React.FC = () => {
   // Limit to 6 categories for display
   const displayCategories = categories.slice(0, 6);
 
-  // Dynamic icon mapping based on icon name from backend
+  // Dynamic icon access from lucide-react library
   const getIconComponent = (iconName: string) => {
-    if (!iconName) return Home; // Return default icon if no icon name provided
+    if (!iconName) return Icons.Home; // Return default Home icon if no icon name provided
 
-    const iconMap: { [key: string]: React.ComponentType<any> } = {
-      'home': Home,
-      'building': Building,
-      'bath': Bath,
-      'hard-hat': HardHat,
-      'hardhat': HardHat,
-      'paint-bucket': PaintBucket,
-      'paintbucket': PaintBucket,
-      'trees': Trees,
-      'wrench': Wrench,
-      'ruler': Ruler,
-      'tractor': Tractor,
-      'hammer': Hammer,
-      'zap': Zap,
-      'electrical-services': Zap,
-      'phone': Phone,
-      'star': Star,
-      'shield': Shield,
-      'clock': Clock,
-      'check-circle': CheckCircle,
-      'checkcircle': CheckCircle,
-      // Add more icon mappings as needed
-    };
+    // Try to access the icon directly from lucide-react library
+    const IconComponent = Icons[iconName as keyof typeof Icons] as React.ComponentType<any>;
+    
+    if (IconComponent) {
+      return IconComponent;
+    }
 
-    return iconMap[iconName.toLowerCase()] || Home; // Default to Home icon
+    // Fallback to Home icon if not found
+    return Icons.Home;
   };
 
   const containerVariants = {
@@ -165,7 +145,7 @@ const PopularServices: React.FC = () => {
             className="inline-flex items-center px-8 py-3 renovixy-gradient text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
           >
             View All Services
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <Icons.ArrowRight className="w-4 h-4 ml-2" />
           </Link>
         </motion.div>
       </div>
