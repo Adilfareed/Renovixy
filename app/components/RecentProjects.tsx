@@ -1,13 +1,16 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useGetProjects } from '../data/hooks';
 import ProjectCard from './ProjectCard';
+import Modal from './ui/Modal';
+import ProjectDetailModal from './modals/ProjectDetailModal';
 import type { Project } from '../types';
 
 export default function RecentProjects() {
   const { projects, isLoading } = useGetProjects();
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
   // Get featured projects or first 4 projects
   const featuredProjects = React.useMemo(() => {
@@ -15,6 +18,14 @@ export default function RecentProjects() {
     const featured = projects.filter((project: Project) => project?.featured);
     return featured.length > 0 ? featured.slice(0, 3) : projects.slice(0, 4);
   }, [projects, isLoading]);
+
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,10 +77,7 @@ export default function RecentProjects() {
                 key={project._id} 
                 project={project} 
                 index={idx} 
-                onClick={() => {
-                  // Navigate to project detail or modal
-                  window.location.href = `/projects/${project._id}`;
-                }}
+                onClick={() => handleProjectClick(project)}
               />
             ))}
           </motion.div>
@@ -87,6 +95,21 @@ export default function RecentProjects() {
             View All Projects
           </button>
         </div>
+
+        {/* Project Detail Modal */}
+        <Modal
+          isOpen={!!selectedProject}
+          onClose={handleCloseModal}
+          title={selectedProject?.title}
+          size="xl"
+        >
+          {selectedProject && (
+            <ProjectDetailModal 
+              project={selectedProject}
+              onClose={handleCloseModal}
+            />
+          )}
+        </Modal>
       </div>
     </div>
   );

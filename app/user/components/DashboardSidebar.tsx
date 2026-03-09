@@ -41,11 +41,11 @@ const sidebarItems = [
     href: "/#quote",
     icon: FileText,
   },
-  {
-    title: "Settings",
-    href: "/user/settings",
-    icon: Settings,
-  },
+  // {
+  //   title: "Settings",
+  //   href: "/user/settings",
+  //   icon: Settings,
+  // },
 ];
 
 export default function DashboardSidebar({ isOpen, setIsOpen }: SidebarProps) {
@@ -62,7 +62,7 @@ export default function DashboardSidebar({ isOpen, setIsOpen }: SidebarProps) {
       {/* Mobile backdrop */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/50 bg-opacity-50 z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}

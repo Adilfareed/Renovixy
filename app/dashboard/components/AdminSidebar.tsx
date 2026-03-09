@@ -13,7 +13,9 @@ import {
   Menu,
   X,
   TrendingUp,
-  ClipboardList
+  ClipboardList,
+  Wrench,
+  Folder
 } from "lucide-react";
 import { useGetCurrentUser, useLogout } from "@/app/data/hooks/useAuth";
 
@@ -44,15 +46,25 @@ const sidebarItems = [
     icon: ClipboardList,
   },
   {
-    title: "Analytics",
-    href: "/dashboard/analytics",
-    icon: TrendingUp,
+    title: "Services",
+    href: "/dashboard/services",
+    icon: Wrench,
   },
   {
-    title: "Settings",
-    href: "/dashboard/settings",
-    icon: Settings,
+    title: "Categories",
+    href: "/dashboard/services/categories",
+    icon: Folder,
   },
+  // {
+  //   title: "Analytics",
+  //   href: "/dashboard/analytics",
+  //   icon: TrendingUp,
+  // },
+  // {
+  //   title: "Settings",
+  //   href: "/dashboard/settings",
+  //   icon: Settings,
+  // },
 ];
 
 export default function AdminSidebar({ isOpen, setIsOpen }: SidebarProps) {

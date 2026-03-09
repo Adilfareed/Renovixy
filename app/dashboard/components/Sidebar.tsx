@@ -13,6 +13,8 @@ import {
   LogOut,
   LayoutDashboard,
   List,
+  Folder,
+  Wrench,
 } from "lucide-react";
 
 const menu = [
@@ -20,8 +22,8 @@ const menu = [
   { name: "Users", href: "/dashboard/users", icon: <BarChart2 size={20} /> },
   { name: "Orders", href: "/dashboard/orders", icon: <ShoppingCart size={20} /> },
   { name: "Projects", href: "/dashboard/projects", icon: <Package size={20} /> },
-  { name: "Services", href: "/dashboard/services", icon: <TrendingUp size={20} /> },
-  { name: "Categories", href: "/dashboard/services/categories", icon: <List size={20} /> },
+  { name: "Services", href: "/dashboard/services", icon: <Wrench size={20} /> },
+  { name: "Categories", href: "/dashboard/services/categories", icon: <Folder size={20} /> },
 ];
 
 export default function Sidebar() {
